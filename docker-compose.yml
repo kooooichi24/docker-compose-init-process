@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  sample:
+    build: ./
+    container_name: sample
+    hostname: sample
+    restart: always
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - seccomp:unconfined
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    environment:
+      TZ: 'Asia/Tokyo'
